@@ -11,14 +11,12 @@ public class ParkourDataUtil {
         return pl.data.getTime(player);
     }
 
-    public static HashMap<Long, UUID> getTopFiveTimes() {
+    public static List<Long> getTopFiveTimes() {
         ParkourPlugin pl = ParkourPlugin.getInstance();
         HashMap<Long, UUID> allTimes = pl.data.getAllTimes();
         List<Long> longList = new ArrayList<>(Arrays.asList(allTimes.keySet().toArray(new Long[0])));
         Collections.sort(longList);
 
-        List<Long> topFive = longList.subList(0, 4);
-        HashMap<UUID, Long>
-        return allTimes;
+        return longList.subList(0,4);
     }
 }

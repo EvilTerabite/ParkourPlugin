@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public final class ParkourPlugin extends JavaPlugin implements Listener {
 
-    public HashMap<UUID, ArrayList<Long>> userTimes;
+    public HashMap<Long, UUID> userTimes;
 
     public MySQL sql;
     public SQLGetter data;
@@ -44,8 +44,12 @@ public final class ParkourPlugin extends JavaPlugin implements Listener {
             Bukkit.getLogger().info("Database connected successfully!");
             data.createTable();
             pluginManager.registerEvents(this, this);
-            data.populateMap(userTimes);
         }
+
+        //Update top 5 times
+        getServer().getScheduler().runTaskTimer(this, () -> {
+            userTimes = data.getAllTimes();
+        },0, 20L * 5);
     }
 
     @Override
