@@ -4,3 +4,9 @@ main: me.evilterabite.parkourplugin.ParkourPlugin
 api-version: 1.18
 authors: [ evilterabite ]
 description: A trial project for DevRoom
+
+commands:
+  parkour:
+    description: root command
+  debug:
+    description: dev command
